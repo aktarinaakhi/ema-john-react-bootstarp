@@ -1,0 +1,19 @@
+.product-container {
+  display: flex;
+  border-right: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+.product-detail {
+  text-align: left;
+  margin-left: 20px;
+}
+.name {
+  color: blue;
+}
+.button {
+  background-color: #f0c14b;
+  padding: 0 50px;
+  border: 1px solid #846a29;
+  border-radius: 3px;
+  cursor: pointer;
+}

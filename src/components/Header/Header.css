@@ -1,0 +1,19 @@
+.header-img img {
+  width: 23%;
+}
+.nav-link {
+  text-decoration: none;
+  display: flex;
+}
+nav {
+  background-color: black;
+  padding-left: 30px;
+}
+.input-field {
+  background-color: rgb(34, 33, 33);
+}
+.input {
+  width: 75%;
+  margin: 18px 0;
+}
+
