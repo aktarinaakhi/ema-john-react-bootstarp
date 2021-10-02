@@ -1,6 +1,11 @@
 import React from 'react';
+// import { useHistory } from 'react-router-dom';
 // import Product from '../Product/Product';
 import "./Cart.css"
+// export const HandleReview = () => {
+//     const history = useHistory();
+//     history.push("/orderReview");
+// }
 const Cart = (props) => {
     const { cart } = props;
     // console.log(cart.length);
@@ -17,9 +22,6 @@ const Cart = (props) => {
         estimitedTax = totalBeforeTax * 0.1;
         taxTotal = totalBeforeTax + estimitedTax;
     }
-
-
-
 
     return (
         <div>

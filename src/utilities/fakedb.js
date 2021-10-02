@@ -1,3 +1,9 @@
+
+const getDb = () => localStorage.getItem('shopping_cart');
+const updateDb = cart => {
+  localStorage.setItem('shopping_cart', JSON.stringify(cart));
+}
+
 // use local storage as your db for now
 const addToDb = id => {
   const exists = getDb();
@@ -18,12 +24,7 @@ const addToDb = id => {
   updateDb(shopping_cart);
 }
 
-const getDb = () => localStorage.getItem('shopping_cart');
-
-const updateDb = cart => {
-  localStorage.setItem('shopping_cart', JSON.stringify(cart));
-}
-
+//remove from db
 const removeFromDb = id => {
   const exists = getDb();
   if (!exists) {
@@ -36,6 +37,7 @@ const removeFromDb = id => {
   }
 }
 
+//get data, if we reload this website then cart update and show data 
 const getStoredCart = () => {
   const exists = getDb();
   return exists ? JSON.parse(exists) : {};
