@@ -1,13 +1,12 @@
-// import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Router } from 'react-router';
 import Shop from './components/Shop/Shop';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import OrderReview from './components/OrderReview/OrderReview';
 import Inventory from './components/Inventory/Inventory';
 import NotFound from './components/NotFound/NotFound';
+import PlaceOrder from './components/PlaceOrder/PlaceOrder';
 
 function App() {
   return (
@@ -17,19 +16,28 @@ function App() {
         <Header></Header>
 
         <Switch>
+
           <Route exact path="/">
             <Shop></Shop>
           </Route>
-          <Route path="/shop">
+
+          <Route exact path="/shop">
             <Shop></Shop>
           </Route>
-          <Route path="/orderReview">
+
+          <Route exact path="/orderReview">
             <OrderReview></OrderReview>
           </Route>
-          <Route path="/inventory">
+
+          <Route exact path="/inventory">
             <Inventory></Inventory>
           </Route>
-          <Route path="*">
+
+          <Route exact path="/placeorder">
+            <PlaceOrder></PlaceOrder>
+          </Route>
+
+          <Route exact path="*">
             <NotFound></NotFound>
           </Route>
 

@@ -1,11 +1,6 @@
 import React from 'react';
-// import { useHistory } from 'react-router-dom';
-// import Product from '../Product/Product';
 import "./Cart.css"
-// export const HandleReview = () => {
-//     const history = useHistory();
-//     history.push("/orderReview");
-// }
+
 const Cart = (props) => {
     const { cart } = props;
     // console.log(cart.length);
@@ -44,7 +39,8 @@ const Cart = (props) => {
                 <p><small>Estimited tax : $ {estimitedTax.toFixed(2)}</small></p>
                 <h4> Total order : $ {taxTotal.toFixed(2)}</h4>
             </div>
-            <button className="button mt-3">Review your order</button>
+            {props.children}
+            {/* <button className="button mt-3">Review your order</button> */}
         </div>
     );
 };

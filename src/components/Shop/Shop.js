@@ -1,6 +1,7 @@
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
@@ -98,7 +99,11 @@ const Shop = () => {
                     }
                 </div>
                 <div className="cart-container mt-3">
-                    <Cart cart={cart}></Cart>
+                    <Cart cart={cart}>
+                        <Link to="/orderReview">
+                            <button className="button mt-4">Review your order</button>
+                        </Link>
+                    </Cart>
                 </div>
 
             </div>

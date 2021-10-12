@@ -1,6 +1,5 @@
-import { faShoppingCart, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
 import Rating from 'react-rating';
 import "./Product.css"
 
@@ -31,8 +30,8 @@ const Product = (props) => {
 
                         <Rating initialRating={star}
                             emptySymbol="far fa-star"
-                            fullSymbol="fas fa-star"> 
-                            </Rating>
+                            fullSymbol="fas fa-star">
+                        </Rating>
                         <h5>Features </h5>
                     </div>
                 </div>
