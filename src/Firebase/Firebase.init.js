@@ -6,4 +6,4 @@ const initializeAuthentication = () => {
 
 }
 
-export default initializeAuthentication
+export default initializeAuthentication;

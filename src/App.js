@@ -7,42 +7,61 @@ import OrderReview from './components/OrderReview/OrderReview';
 import Inventory from './components/Inventory/Inventory';
 import NotFound from './components/NotFound/NotFound';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import AuthProvider from './Context/AuthProvider';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Shipping from './components/Shipping/Shipping';
 
 function App() {
   return (
     <div className="App">
 
-      <BrowserRouter>
-        <Header></Header>
+      <AuthProvider>
+        <BrowserRouter>
+          <Header></Header>
 
-        <Switch>
+          <Switch>
 
-          <Route exact path="/">
-            <Shop></Shop>
-          </Route>
+            <Route exact path="/">
+              <Shop></Shop>
+            </Route>
 
-          <Route exact path="/shop">
-            <Shop></Shop>
-          </Route>
+            <Route exact path="/shop">
+              <Shop></Shop>
+            </Route>
 
-          <Route exact path="/orderReview">
-            <OrderReview></OrderReview>
-          </Route>
+            <Route exact path="/orderReview">
+              <OrderReview></OrderReview>
+            </Route>
 
-          <Route exact path="/inventory">
-            <Inventory></Inventory>
-          </Route>
+            <PrivateRoute exact path="/inventory">
+              <Inventory></Inventory>
+            </PrivateRoute>
 
-          <Route exact path="/placeorder">
-            <PlaceOrder></PlaceOrder>
-          </Route>
+            <PrivateRoute exact path="/shipping">
+              <Shipping></Shipping>
+            </PrivateRoute>
 
-          <Route exact path="*">
-            <NotFound></NotFound>
-          </Route>
+            <PrivateRoute exact path="/placeorder">
+              <PlaceOrder></PlaceOrder>
+            </PrivateRoute>
 
-        </Switch>
-      </BrowserRouter>
+            <Route exact path="/login">
+              <Login></Login>
+            </Route>
+
+            <Route exact path="/register">
+              <Register></Register>
+            </Route>
+
+            <Route exact path="*">
+              <NotFound></NotFound>
+            </Route>
+
+          </Switch>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }
