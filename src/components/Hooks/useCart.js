@@ -30,7 +30,6 @@ const useCart = () => {
                     setCart(storedCart);
                 }
             })
-
     }, [])
 
     return [cart, setCart]
