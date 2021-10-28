@@ -1,9 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
-// import { clearTheCart } from "../../utilities/fakedb";
 import useAuth from "../Hooks/useAuth";
-// import useCart from "../Hooks/useCart";
 import "./Shipping.css"
 
 const Shipping = () => {

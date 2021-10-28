@@ -4,59 +4,34 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
+import useCart from '../Hooks/useCart';
 import Product from '../Product/Product';
 import "./Shop.css"
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useCart();
     const [filterProduct, setFilterProduct] = useState([]);
+    const [page, setPage] = useState(0);
+    const [pageCount, setPageCount] = useState(0);
 
+    const size = 10;
     useEffect(() => {
-        fetch('./products.json')
+        fetch(`http://localhost:5000/products?page=${page}&&size=${size}`)
             .then(res => res.json())
             .then(data => {
-                setProducts(data);
-                setFilterProduct(data);
+                setProducts(data.products);
+                setFilterProduct(data.products);
+                const count = data.count;
+                const pageNumber = Math.ceil(count / size);
+                setPageCount(pageNumber);
             });
-    }, [])
-
-    //get info from db or update cart after reload 
-    //local storage e jehetu cart er key gula paici, tai key theke product nite hobe.
-    //bahir theke kichu nite hole side effect(useEffect) use korte hoy.
-
-    useEffect(() => {
-
-        //local storage e added key gula dhorteci ei function diye
-        //ei key gula k niye check korbo total product er sathe kon gular mil ache, then oi product er sob info nibo
-        //key pailam
-        // console.log(products);   //products er array oaici
-        //akhn kaj holo 
-        //product asle tahole ei function call korbe, tahole r undifined asbe na. 
-        if (products.length) {
-            const savedCart = getStoredCart();
-            const storedCart = []; // info rakhar jnno nijeder banano array 
-            for (const key in savedCart) {
-                const addedProduct = products.find(product => product.key === key);
-                if (addedProduct) {
-                    const quantity = savedCart[key];
-                    addedProduct.quantity = quantity;
-                }
-                storedCart.push(addedProduct);
-
-            }
-            setCart(storedCart);
-        }
-        // console.log(key,addedProduct); //undifined asbe,karon useEffect aysncronas onujayi kaj kore.uporer useEffect data load korte korte ei useEffect kaj suru kore dibe.
-
-    }, [products])  //products change hole ei function abar call korbe (special cause na thakle dependency deoya jabe na)
+    }, [page])
 
     const handleAddToCart = (product) => {
 
         const exist = cart.find(pd => pd.key === product.key);
-
         let newCart = [];
-
         if (exist) {
             const rest = cart.filter(pd => pd.key !== product.key);
             exist.quantity = exist.quantity + 1;
@@ -80,8 +55,6 @@ const Shop = () => {
     }
 
     return (
-
-
         <>
             <div className="input-field">
                 <input onChange={handleSearch} className="input" type="text" placeholder="Search product" />
@@ -97,6 +70,16 @@ const Shop = () => {
                         >
                         </Product>)
                     }
+                    <div className="pagination">
+                        {
+                            [...Array(pageCount).keys()]
+                                .map(number => <button
+                                    className={number === page ? 'selected' : ''}
+                                    key={number}
+                                    onClick={() => setPage(number)}
+                                >{number + 1}</button>)
+                        }
+                    </div>
                 </div>
                 <div className="cart-container mt-3">
                     <Cart cart={cart}>

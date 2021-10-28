@@ -12,12 +12,11 @@ const useFirebase = () => {
     const handleGoogleSignIn = () => {
         return signInWithPopup(auth, googleProvider)
     }
-    
+
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
-                // const uid = user.uid;
             }
         });
     }, []);
