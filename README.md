@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+live site: https://ema-john-authentication-81fb2.web.app/
 
 ## Available Scripts
 
